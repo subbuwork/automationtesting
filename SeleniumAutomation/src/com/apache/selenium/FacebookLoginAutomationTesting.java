@@ -22,8 +22,6 @@ public class FacebookLoginAutomationTesting {
 		
 		//webDriver.findElement(By.xpath(".//*[@id='userNavigationLabel']")).click();
 		webDriver.findElement(By.xpath(".//*[@id='BLUE_BAR_ID_DO_NOT_USE']/div/div/div[1]/div/div/ul/li[16]/a/span/span")).click();
-		
-		
 	}
 
 }
