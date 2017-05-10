@@ -1,4 +1,4 @@
-package com.selenium.automation;
+package com.apache.selenium;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class DataDrivenTestCase {
+public class DataDrivenTestCaseExcel {
     WebDriver webDriver;
     
     @BeforeTest
@@ -41,13 +41,16 @@ public class DataDrivenTestCase {
     
     @DataProvider(name="wordpressdata")
     public Object[][] data(){
-       Object[][] dataarray = new Object[2][2];
-    
-       dataarray[0][0]="user1";
-       dataarray[0][1]="user123";
-       dataarray[1][0]="user2";
-       dataarray[1][1]="user123";
-    
+    	ExcelReadingConfig excelReadingConfig = new ExcelReadingConfig("C:\\Users\\subbu\\automation\\SeleniumAutomation\\testdata\\Testdata.xlsx");
+    	
+    	Integer rowCount = excelReadingConfig.rowCount(0);
+    	
+    	Object[][] dataarray = new Object[rowCount][2];
+       for(int i=0;i<rowCount;i++){
+       dataarray[i][0]=excelReadingConfig.getData(0, i, 0);
+       dataarray[i][1]=excelReadingConfig.getData(0, i, 1);
+       }
+    System.out.println("Data array:::"+dataarray.toString());
     return dataarray;
     }
 }

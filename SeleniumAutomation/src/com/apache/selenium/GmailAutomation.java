@@ -1,10 +1,11 @@
-package com.selenium.automation;
+package com.apache.selenium;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,9 +13,8 @@ import org.testng.annotations.Test;
 
 import com.java.selenium.utils.SeleniumUtil;
 
-
 public class GmailAutomation {
-	public static final String screenshots_location ="./screenshosts/gmail";
+	
 	WebDriver driver;
 	
 	@BeforeMethod
@@ -45,10 +45,10 @@ public class GmailAutomation {
 	public void tearDownBrowser(ITestResult result){
 		if(ITestResult.SUCCESS == result.getStatus()){
 			System.out.println(result.getName()+"::Test success::"+result.getStatus());
-			SeleniumUtil.takeScreenShot(driver,result.getName(),screenshots_location);
+			SeleniumUtil.takeScreenShot(driver,result.getName());
 		}else{
 			System.out.println(result.getName()+"::Test fail::"+result.getStatus());
-			SeleniumUtil.takeScreenShot(driver,result.getName(),screenshots_location);
+			SeleniumUtil.takeScreenShot(driver,result.getName());
 		}
 		driver.close();
 		driver.quit();
